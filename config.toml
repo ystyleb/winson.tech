@@ -92,9 +92,9 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     #  页面头部导航栏标题配置
     [params.header.title]
       # LOGO 的 URL
-      logo = "images/android-chrome-384x384.png"
+      logo = "../android-chrome-384x384.png"
       # 标题名称
-      name = ""
+      name = "winson.tech"
       # 你可以在名称 (允许 HTML 格式) 之前添加其他信息, 例如图标
       pre = ""
       # 你可以在名称 (允许 HTML 格式) 之后添加其他信息, 例如图标
@@ -114,7 +114,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     #  是否显示作者
     author = true
     # 网站创立年份
-    since = 2019
+    since = 2022
     # ICP 备案信息，仅在中国使用 (支持 HTML 格式)
     icp = '<div style="width:300px;margin:0 auto; padding:20px 0;" ><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030402004365" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="https://winson-1251269514.cos.ap-chengdu.myqcloud.com/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">粤公网安备 44030402004365号</p></div>'
     # 许可协议信息 (支持 HTML 格式)
@@ -185,7 +185,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       # Gravatar 邮箱，用于优先在主页显示的头像
       gravatarEmail = ""
       # 主页显示头像的 URL
-      avatarURL = "images/android-chrome-384x384.png"
+      avatarURL = "android-chrome-384x384.png"
       #  主页显示的网站标题 (支持 HTML 格式)
       title = "winson.tech"
       # 主页显示的网站副标题 (允许 HTML 格式)
@@ -374,13 +374,13 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       Mix = false
     #  评论系统设置
     [params.page.comment]
-      enable = false
+      enable = true
       # Disqus 评论系统设置
       [params.page.comment.disqus]
         # 
-        enable = false
+        enable = true
         # Disqus 的 shortname，用来在文章中启用 Disqus 评论系统
-        shortname = ""
+        shortname = "winson"
       # Gitalk 评论系统设置
       [params.page.comment.gitalk]
         # 
