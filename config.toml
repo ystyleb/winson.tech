@@ -70,7 +70,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   # 网站默认主题样式 ["auto", "light", "dark"]
   defaultTheme = "auto"
   # 公共 git 仓库路径，仅在 enableGitInfo 设为 true 时有效
-  gitRepo = ""
+  gitRepo = "https://github.com/ystyleb/winson.tech.git"
   #  哪种哈希函数用来 SRI, 为空时表示不使用 SRI
   # ["sha256", "sha384", "sha512", "md5"]
   fingerprint = ""
@@ -96,7 +96,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       # 标题名称
       name = "winson.tech"
       # 你可以在名称 (允许 HTML 格式) 之前添加其他信息, 例如图标
-      pre = ""
+      pre = '<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="referrer" content="no-referrer-when-downgrade">'
       # 你可以在名称 (允许 HTML 格式) 之后添加其他信息, 例如图标
       post = ""
       #  是否为标题显示打字机动画
@@ -116,7 +116,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     # 网站创立年份
     since = 2022
     # ICP 备案信息，仅在中国使用 (支持 HTML 格式)
-    icp = '<div style="width:300px;margin:0 auto; padding:20px 0;" ><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030402004365" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="https://winson-1251269514.cos.ap-chengdu.myqcloud.com/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">粤公网安备 44030402004365号</p></div>'
+    icp = '<div style="width:300px;margin:0 auto; padding:20px 0;" ><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030402004365" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="https://winson-1251269514.cos.ap-chengdu.myqcloud.com/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">粤公网安备 44030402004365号</p></div><div class="busuanzi-footer"><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span><span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span></div>'
     # 许可协议信息 (支持 HTML 格式)
     license = '<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>'
 

@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>我的全新 Hugo 网站</title>
+        <link>https://winson.tech/</link>
+        <description>这是我的全新 Hugo 网站</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>ystyle.b@gmail.com (winson)</managingEditor>
+            <webMaster>ystyle.b@gmail.com (winson)</webMaster><lastBuildDate>Wed, 31 Aug 2022 10:04:29 &#43;0800</lastBuildDate>
+            <atom:link href="https://winson.tech/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+    <title>First_post</title>
+    <link>https://winson.tech/first_post/</link>
+    <pubDate>Wed, 31 Aug 2022 10:04:29 &#43;0800</pubDate>
+    <author>winson</author>
+    <guid>https://winson.tech/first_post/</guid>
+    <description><![CDATA[icp = '&lt;div style=&quot;width:300px;margin:0 auto; padding:20px 0;&quot; &gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030402004365&quot; style=&quot;display:inline-block;text-decoration:none;height:20px;line-height:20px;&quot;&gt;&lt;img src=&quot;https://winson-1251269514.cos.ap-chengdu.myqcloud.com/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png&quot; style=&quot;float:left;&quot;/&gt;&lt;p style=&quot;float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;&quot;&gt;粤公网安备 44030402004365号&lt;/p&g]]></description>
+</item>
+</channel>
+</rss>
