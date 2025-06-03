@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>The Web App Manifest学习笔记 - winson.tech</title><meta name="Description" content="winson.tech"><meta property="og:title" content="The Web App Manifest学习笔记" />
+<meta property="og:description" content="今天无意中发现日志中有百度蜘蛛的请求： 1 220.181.108.168 - www.arkuu.com [18/Sep/2019:10:03:30 &#43;0800] &#34;GET /site.webmanifest HTTP/1.1&#34; 404 7325 &#34;-&#34; &#34;Mozilla/5.0 (compatible; Baiduspider/2.0; &#43;http://www.baidu.com/search/spider.html)&#34; &#34;-&#34; 然后我，就GOOGLE了一下。为什么百度蜘蛛会请求这个/site.w" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://winson.tech/the-web-app-manifest%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" /><meta property="og:image" content="https://winson.tech/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-08-31T10:04:29+08:00" />
+<meta property="article:modified_time" content="2022-09-01T21:59:15+08:00" /><meta property="og:site_name" content="winson.tech" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://winson.tech/logo.png"/>
+
+<meta name="twitter:title" content="The Web App Manifest学习笔记"/>
+<meta name="twitter:description" content="今天无意中发现日志中有百度蜘蛛的请求： 1 220.181.108.168 - www.arkuu.com [18/Sep/2019:10:03:30 &#43;0800] &#34;GET /site.webmanifest HTTP/1.1&#34; 404 7325 &#34;-&#34; &#34;Mozilla/5.0 (compatible; Baiduspider/2.0; &#43;http://www.baidu.com/search/spider.html)&#34; &#34;-&#34; 然后我，就GOOGLE了一下。为什么百度蜘蛛会请求这个/site.w"/>
+<meta name="application-name" content="winson.tech">
+<meta name="apple-mobile-web-app-title" content="winson.tech"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="../safari-pinned-tab.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://winson.tech/the-web-app-manifest%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "The Web App Manifest学习笔记",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/winson.tech\/the-web-app-manifest%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0\/"
+        },"genre": "posts","wordcount":  1332 ,
+        "url": "https:\/\/winson.tech\/the-web-app-manifest%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0\/","datePublished": "2022-08-31T10:04:29+08:00","dateModified": "2022-09-01T21:59:15+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "winson"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="winson.tech"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="../android-chrome-384x384.png"
+        data-srcset="../android-chrome-384x384.png, ../android-chrome-384x384.png 1.5x, ../android-chrome-384x384.png 2x"
+        data-sizes="auto"
+        alt="../android-chrome-384x384.png"
+        title="../android-chrome-384x384.png" />winson.tech</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="winson.tech"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="../android-chrome-384x384.png"
+        data-srcset="../android-chrome-384x384.png, ../android-chrome-384x384.png 1.5x, ../android-chrome-384x384.png 2x"
+        data-sizes="auto"
+        alt="../android-chrome-384x384.png"
+        title="../android-chrome-384x384.png" />winson.tech</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">The Web App Manifest学习笔记</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>winson</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-08-31">2022-08-31</time>&nbsp;<i class="far fa-calendar-check fa-fw"></i>&nbsp;<time datetime="2022-09-01">2022-09-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1332 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;
+    
+
+    
+        
+
+        
+        
+            <span id="busuanzi_container_value_page_pv"><i class="far fa-eye fa-fw"></i>
+                
+                <span id="busuanzi_value_page_pv"></span>&nbsp;views</span>
+        
+    
+
+</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#sitewebmanifest是什么">site.webmanifest是什么</a></li>
+        <li><a href="#sitewebmanifest全貌是什么子">site.webmanifest全貌是什么子</a></li>
+        <li><a href="#如何使用sitewebmanifest">如何使用site.webmanifest</a></li>
+        <li><a href="#sitewebmanifest细节">site.webmanifest细节</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>今天无意中发现日志中有百度蜘蛛的请求：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="err">220.181.108.168 - www.arkuu.com [18/Sep/2019:10:03:30 +0800] &#34;GET /site.webmanifest HTTP/1.1&#34; 404 7325 &#34;-&#34; &#34;Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)&#34; &#34;-&#34;
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后我，就GOOGLE了一下。为什么百度蜘蛛会请求这个/site.webmanifest.能及了解一下site.webmanifest是什么？如何用？</p>
+<p>特记录下来。</p>
+<h3 id="sitewebmanifest是什么">site.webmanifest是什么</h3>
+<p>它是一种实验性的技术，在生产版本中使用之前，必须要先了解浏览器情况。支持情况。</p>
+<p>浏览器的兼容情况，请参见：</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/Manifest#Browser_compatibility" target="_blank" rel="noopener noreffer ">https://developer.mozilla.org/en-US/docs/Web/Manifest#Browser_compatibility</a>
+web app manifest是一系列PWAS（渐近式WEB APP）技术的其中之一，它可以使WEB站点不需要app store，就能够安装在用户的手机主屏幕，而且不是简单的添加书签或主屏幕的链接规则。PWAS能被下载，或离线浏览，像正常WEB应用一样。</p>
+<p>它是以json文件的方式，提供WEB应用程序的一些详细信息，对于WEB应用来说，一些必须的下载，提供用户类似原生应用的体验(安装到主屏幕，提供用户快速访问和丰富的体验)，PWAS webmaniest提供一些要的比如名字，作者，图标，版本，描述等一系列资源。</p>
+<h3 id="sitewebmanifest全貌是什么子">site.webmanifest全貌是什么子</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;阿酷技术学习&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;short_name&#34;</span><span class="p">:</span> <span class="s2">&#34;阿酷技术&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;start_url&#34;</span><span class="p">:</span> <span class="s2">&#34;/&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;display&#34;</span><span class="p">:</span> <span class="s2">&#34;standalone&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;background_color&#34;</span><span class="p">:</span> <span class="s2">&#34;#fff&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;阿酷边学习边记录&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;icons&#34;</span><span class="p">:</span> <span class="p">[{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;src&#34;</span><span class="p">:</span> <span class="s2">&#34;images/touch/homescreen48.png&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;sizes&#34;</span><span class="p">:</span> <span class="s2">&#34;48x48&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;image/png&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;src&#34;</span><span class="p">:</span> <span class="s2">&#34;images/touch/homescreen72.png&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;sizes&#34;</span><span class="p">:</span> <span class="s2">&#34;72x72&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;image/png&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;src&#34;</span><span class="p">:</span> <span class="s2">&#34;images/touch/homescreen96.png&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;sizes&#34;</span><span class="p">:</span> <span class="s2">&#34;96x96&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;image/png&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;src&#34;</span><span class="p">:</span> <span class="s2">&#34;images/touch/homescreen144.png&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;sizes&#34;</span><span class="p">:</span> <span class="s2">&#34;144x144&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;image/png&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;src&#34;</span><span class="p">:</span> <span class="s2">&#34;images/touch/homescreen168.png&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;sizes&#34;</span><span class="p">:</span> <span class="s2">&#34;168x168&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;image/png&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;src&#34;</span><span class="p">:</span> <span class="s2">&#34;images/touch/homescreen192.png&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;sizes&#34;</span><span class="p">:</span> <span class="s2">&#34;192x192&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;image/png&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}],</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;related_applications&#34;</span><span class="p">:</span> <span class="p">[{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;platform&#34;</span><span class="p">:</span> <span class="s2">&#34;play&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;url&#34;</span><span class="p">:</span> <span class="s2">&#34;https://play.google.com/store/apps/details?id=arkuu.com&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="如何使用sitewebmanifest">如何使用site.webmanifest</h3>
+<p>在我们的web站中这样写：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;manifest&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;/site.webmanifest&#34;</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>修改nginx mime.types 添加：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="nx">application</span><span class="o">/</span><span class="nx">manifest</span><span class="o">+</span><span class="nx">json</span>             <span class="nx">webmanifest</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>修改nginx server 添加：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"> <span class="k">location</span> <span class="p">=</span> <span class="s">/site.webmanifest</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="kn">root</span>   <span class="s">/usr/share/nginx/html/arkuu</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="kn">allow</span> <span class="s">all</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="kn">log_not_found</span> <span class="no">off</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="kn">access_log</span> <span class="no">off</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这样就可以访问到：https://www.arkuu.com/site.webmanifest</p>
+<h3 id="sitewebmanifest细节">site.webmanifest细节</h3>
+<p>short_name 或name</p>
+<p>必须提供其一，如果同时提供，short_name将用于用户的主屏幕、启动程序或其他空间可能有限的地方。名称在app安装提示中使用。</p>
+<p>&ldquo;short_name&rdquo;: &ldquo;阿酷技术&rdquo;,
+&ldquo;name&rdquo;: &ldquo;阿酷技术学习&rdquo;
+icons</p>
+<p>当用户添加你的站点到他的手机主屏幕，你能够定义一系列的图标为浏览器所用。像主屏幕图标，启动，任务切换，启动画面等。。icon是一个数组，其中每个对象包括src,sizes,type</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="s2">&#34;icons&#34;</span><span class="err">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;src&#34;</span><span class="p">:</span> <span class="s2">&#34;/images/icons-192.png&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;image/png&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;sizes&#34;</span><span class="p">:</span> <span class="s2">&#34;192x192&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;src&#34;</span><span class="p">:</span> <span class="s2">&#34;/images/icons-512.png&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;image/png&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;sizes&#34;</span><span class="p">:</span> <span class="s2">&#34;512x512&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>包括一个192x192像素的图标和一个512x512像素的图标。Chrome将自动缩放设备图标。如果你喜欢缩放你自己的图标，并调整它们的像素完美，提供48dp的图标增量。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">start_url
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>当用户启动app时请求的URL，无论用户添加主屏幕时的URL是什么，都以此url启动。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">background_color
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>当用户首次启动画面时启动画面背影颜色。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">display
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>定制浏览器启动样式，可以隐藏地址栏，工具栏，像游戏一样你可以全屏。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">fullscreen	Opens the web application without any browser UI and takes up the entirety of the available display area.
+</span></span><span class="line"><span class="cl">standalone	Opens the web app to look and feel like a standalone native app. The app runs in its own window, separate from the browser, and hides standard browser UI elements like the URL bar, etc.
+</span></span><span class="line"><span class="cl">minimal-ui	This mode is similar to fullscreen, but provides the user with some means to access a minimal set of UI elements for controlling navigation (i.e., back, forward, reload, etc).
+</span></span><span class="line"><span class="cl">Note: Only supported by Chrome on mobile.
+</span></span><span class="line"><span class="cl">browser	A standard browser experience.
+</span></span><span class="line"><span class="cl">orientation
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>启动以后显示方向，有以下几个可选：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">any
+</span></span><span class="line"><span class="cl">natural
+</span></span><span class="line"><span class="cl">landscape
+</span></span><span class="line"><span class="cl">landscape-primary
+</span></span><span class="line"><span class="cl">landscape-secondary
+</span></span><span class="line"><span class="cl">portrait
+</span></span><span class="line"><span class="cl">portrait-primary
+</span></span><span class="line"><span class="cl">portrait-secondary
+</span></span><span class="line"><span class="cl">scope
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>以后慢慢道来</p>
+<p>本文参考：</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/Manifest" target="_blank" rel="noopener noreffer ">https://developer.mozilla.org/en-US/docs/Web/Manifest</a></p>
+<p><a href="https://developers.google.com/web/fundamentals/web-app-manifest/" target="_blank" rel="noopener noreffer ">https://developers.google.com/web/fundamentals/web-app-manifest/</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-09-01&nbsp;<a class="git-hash" href="https://github.com/ystyleb/winson.tech.git/commit/fb1362e1aafe518e324565b7515be74869f09d2c" target="_blank" title="commit by winsonyang(winsonyang@tencent.com) fb1362e1aafe518e324565b7515be74869f09d2c: The Web App Manifestxxxxxxxxxxxxxxxx学习笔记">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>fb1362e</a></span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/the-web-app-manifest%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://winson.tech/the-web-app-manifest%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-title="The Web App Manifest学习笔记" data-via="ystyleb"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://winson.tech/the-web-app-manifest%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://winson.tech/the-web-app-manifest%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-title="The Web App Manifest学习笔记"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://winson.tech/the-web-app-manifest%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-title="The Web App Manifest学习笔记"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://winson.tech/the-web-app-manifest%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-title="The Web App Manifest学习笔记"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.104.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">winson</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp"><div style="width:300px;margin:0 auto; padding:20px 0;" ><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030402004365" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="https://winson-1251269514.cos.ap-chengdu.myqcloud.com/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">粤公网安备 44030402004365号</p></div></span>
+    
+        
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+        
+            <section>
+                
+                    <span id="busuanzi_container_value_site_pv"><i class="far fa-eye fa-fw"></i>
+                        
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+
+                
+                    &nbsp;|&nbsp;              
+                
+
+                
+                    <span id="busuanzi_container_value_site_uv"><i class="fa fa-user"></i>
+                        
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+            </section>
+        
+
+        
+        
+    
+
+</div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="https://winson.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'G-HREM78X3J4', { 'anonymize_ip': true });
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-HREM78X3J4" async></script></body>
+</html>
