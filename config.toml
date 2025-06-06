@@ -512,7 +512,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     enable = true 
     # Google Analytics
     [params.analytics.google]
-      id = "G-HREM78X3J4"
+      id = "G-94YNG1L737"
       # 是否匿名化用户 IP
       anonymizeIP = true
     # Fathom Analytics
