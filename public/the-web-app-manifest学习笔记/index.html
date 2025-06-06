@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>The Web App Manifest学习笔记 - winson.tech</title><meta name="Description" content="winson.tech"><meta property="og:url" content="http://localhost:1313/the-web-app-manifest%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+        <title>The Web App Manifest学习笔记 - winson.tech</title><meta name="Description" content="winson.tech"><meta property="og:url" content="https://winson.tech/the-web-app-manifest%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
   <meta property="og:site_name" content="winson.tech">
   <meta property="og:title" content="The Web App Manifest学习笔记">
   <meta property="og:description" content="今天无意中发现日志中有百度蜘蛛的请求：
@@ -14,16 +14,17 @@
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2022-08-31T10:04:29+08:00">
     <meta property="article:modified_time" content="2022-08-31T10:04:29+08:00">
-    <meta property="og:image" content="http://localhost:1313/logo.png">
+    <meta property="og:image" content="https://winson.tech/logo.png">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="http://localhost:1313/logo.png">
+  <meta name="twitter:image" content="https://winson.tech/logo.png">
   <meta name="twitter:title" content="The Web App Manifest学习笔记">
   <meta name="twitter:description" content="今天无意中发现日志中有百度蜘蛛的请求：
 220.181.108.168 - www.arkuu.com [18/Sep/2019:10:03:30 &#43;0800] &#34;GET /site.webmanifest HTTP/1.1&#34; 404 7325 &#34;-&#34; &#34;Mozilla/5.0 (compatible; Baiduspider/2.0; &#43;http://www.baidu.com/search/spider.html)&#34; &#34;-&#34; 然后我，就GOOGLE了一下。为什么百度蜘蛛会请求这个/site.webmanifest.能及了解一下site.webmanifest是什么？如何用？">
       <meta name="twitter:site" content="@ystyleb">
 <meta name="application-name" content="winson.tech">
-<meta name="apple-mobile-web-app-title" content="winson.tech"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="../safari-pinned-tab.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/the-web-app-manifest%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<meta name="apple-mobile-web-app-title" content="winson.tech">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="../safari-pinned-tab.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://winson.tech/the-web-app-manifest%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -33,9 +34,9 @@
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/localhost:1313\/the-web-app-manifest%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0\/"
+            "@id": "https:\/\/winson.tech\/the-web-app-manifest%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0\/"
         },"genre": "posts","wordcount":  1256 ,
-        "url": "http:\/\/localhost:1313\/the-web-app-manifest%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0\/","datePublished": "2022-08-31T10:04:29+08:00","dateModified": "2022-08-31T10:04:29+08:00","publisher": {
+        "url": "https:\/\/winson.tech\/the-web-app-manifest%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0\/","datePublished": "2022-08-31T10:04:29+08:00","dateModified": "2022-08-31T10:04:29+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -158,7 +159,7 @@
             </div><div class="content" id="content"><p>今天无意中发现日志中有百度蜘蛛的请求：</p>
 <div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
     <div class="code-header language-http">
-        <span class="code-title"><i class="arrow fas fa-chevron-right fa-fw" aria-hidden="true"></i></span>
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
         <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
         <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
     </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="err">220.181.108.168 - www.arkuu.com [18/Sep/2019:10:03:30 +0800] &#34;GET /site.webmanifest HTTP/1.1&#34; 404 7325 &#34;-&#34; &#34;Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)&#34; &#34;-&#34;</span></span></span></code></pre></div></div>
@@ -173,7 +174,7 @@ web app manifest是一系列PWAS（渐近式WEB APP）技术的其中之一，�
 <h3 id="sitewebmanifest全貌是什么子">site.webmanifest全貌是什么子</h3>
 <div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
     <div class="code-header language-json">
-        <span class="code-title"><i class="arrow fas fa-chevron-right fa-fw" aria-hidden="true"></i></span>
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
         <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
         <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
     </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
@@ -217,21 +218,21 @@ web app manifest是一系列PWAS（渐近式WEB APP）技术的其中之一，�
 <p>在我们的web站中这样写：</p>
 <div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
     <div class="code-header language-html">
-        <span class="code-title"><i class="arrow fas fa-chevron-right fa-fw" aria-hidden="true"></i></span>
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
         <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
         <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
     </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;manifest&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;/site.webmanifest&#34;</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 <p>修改nginx mime.types 添加：</p>
 <div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
     <div class="code-header language-typescript">
-        <span class="code-title"><i class="arrow fas fa-chevron-right fa-fw" aria-hidden="true"></i></span>
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
         <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
         <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
     </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="nx">application</span><span class="o">/</span><span class="nx">manifest</span><span class="o">+</span><span class="nx">json</span>             <span class="nx">webmanifest</span><span class="p">;</span></span></span></code></pre></div></div>
 <p>修改nginx server 添加：</p>
 <div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
     <div class="code-header language-nginx">
-        <span class="code-title"><i class="arrow fas fa-chevron-right fa-fw" aria-hidden="true"></i></span>
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
         <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
         <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
     </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"> <span class="k">location</span> <span class="p">=</span> <span class="s">/site.webmanifest</span> <span class="p">{</span>
@@ -250,7 +251,7 @@ icons</p>
 <p>当用户添加你的站点到他的手机主屏幕，你能够定义一系列的图标为浏览器所用。像主屏幕图标，启动，任务切换，启动画面等。。icon是一个数组，其中每个对象包括src,sizes,type</p>
 <div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
     <div class="code-header language-json">
-        <span class="code-title"><i class="arrow fas fa-chevron-right fa-fw" aria-hidden="true"></i></span>
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
         <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
         <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
     </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="s2">&#34;icons&#34;</span><span class="err">:</span> <span class="p">[</span>
@@ -268,28 +269,28 @@ icons</p>
 <p>包括一个192x192像素的图标和一个512x512像素的图标。Chrome将自动缩放设备图标。如果你喜欢缩放你自己的图标，并调整它们的像素完美，提供48dp的图标增量。</p>
 <div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
     <div class="code-header language-">
-        <span class="code-title"><i class="arrow fas fa-chevron-right fa-fw" aria-hidden="true"></i></span>
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
         <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
         <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
     </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">start_url</span></span></code></pre></div></div>
 <p>当用户启动app时请求的URL，无论用户添加主屏幕时的URL是什么，都以此url启动。</p>
 <div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
     <div class="code-header language-">
-        <span class="code-title"><i class="arrow fas fa-chevron-right fa-fw" aria-hidden="true"></i></span>
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
         <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
         <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
     </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">background_color</span></span></code></pre></div></div>
 <p>当用户首次启动画面时启动画面背影颜色。</p>
 <div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
     <div class="code-header language-">
-        <span class="code-title"><i class="arrow fas fa-chevron-right fa-fw" aria-hidden="true"></i></span>
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
         <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
         <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
     </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">display</span></span></code></pre></div></div>
 <p>定制浏览器启动样式，可以隐藏地址栏，工具栏，像游戏一样你可以全屏。</p>
 <div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
     <div class="code-header language-">
-        <span class="code-title"><i class="arrow fas fa-chevron-right fa-fw" aria-hidden="true"></i></span>
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
         <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
         <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
     </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">fullscreen</span>	<span class="n">Opens</span> <span class="n">the</span> <span class="n">web</span> <span class="n">application</span> <span class="n">without</span> <span class="n">any</span> <span class="n">browser</span> <span class="n">UI</span> <span class="ow">and</span> <span class="n">takes</span> <span class="n">up</span> <span class="n">the</span> <span class="n">entirety</span> <span class="n">of</span> <span class="n">the</span> <span class="n">available</span> <span class="n">display</span> <span class="n">area</span><span class="o">.</span>
@@ -301,7 +302,7 @@ icons</p>
 <p>启动以后显示方向，有以下几个可选：</p>
 <div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
     <div class="code-header language-">
-        <span class="code-title"><i class="arrow fas fa-chevron-right fa-fw" aria-hidden="true"></i></span>
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
         <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
         <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
     </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">any
@@ -328,7 +329,7 @@ icons</p>
                             <a class="link-to-markdown" href="/the-web-app-manifest%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="http://localhost:1313/the-web-app-manifest%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-title="The Web App Manifest学习笔记" data-via="ystyleb"><i class="fab fa-x-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Threads" data-sharer="threads" data-url="http://localhost:1313/the-web-app-manifest%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-title="The Web App Manifest学习笔记"><i class="fab fa-threads fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/the-web-app-manifest%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://localhost:1313/the-web-app-manifest%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-title="The Web App Manifest学习笔记"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://localhost:1313/the-web-app-manifest%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-title="The Web App Manifest学习笔记"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/the-web-app-manifest%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-title="The Web App Manifest学习笔记"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Diaspora" data-sharer="diaspora" data-url="http://localhost:1313/the-web-app-manifest%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-title="The Web App Manifest学习笔记" data-description=""><i class="fab fa-diaspora fa-fw" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=http%3a%2f%2flocalhost%3a1313%2fthe-web-app-manifest%25E5%25AD%25A6%25E4%25B9%25A0%25E7%25AC%2594%25E8%25AE%25B0%2f&amp;text=The%20Web%20App%20Manifest%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0" target="_blank" title="Share on Telegram"><i class="fab fa-telegram fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="https://winson.tech/the-web-app-manifest%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-title="The Web App Manifest学习笔记" data-via="ystyleb"><i class="fab fa-x-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Threads" data-sharer="threads" data-url="https://winson.tech/the-web-app-manifest%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-title="The Web App Manifest学习笔记"><i class="fab fa-threads fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://winson.tech/the-web-app-manifest%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://winson.tech/the-web-app-manifest%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-title="The Web App Manifest学习笔记"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://winson.tech/the-web-app-manifest%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-title="The Web App Manifest学习笔记"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://winson.tech/the-web-app-manifest%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-title="The Web App Manifest学习笔记"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Diaspora" data-sharer="diaspora" data-url="https://winson.tech/the-web-app-manifest%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-title="The Web App Manifest学习笔记" data-description=""><i class="fab fa-diaspora fa-fw" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=https%3a%2f%2fwinson.tech%2fthe-web-app-manifest%25E5%25AD%25A6%25E4%25B9%25A0%25E7%25AC%2594%25E8%25AE%25B0%2f&amp;text=The%20Web%20App%20Manifest%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0" target="_blank" title="Share on Telegram"><i class="fab fa-telegram fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -342,9 +343,11 @@ icons</p>
 
     <div class="post-nav"></div>
 </div>
-</article></div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.147.7">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.3.0"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.147.7">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.3.1-DEV"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
                     <span class="icp"><div style="width:300px;margin:0 auto; padding:20px 0;" ><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030402004365" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="https://winson-1251269514.cos.ap-chengdu.myqcloud.com/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">粤公网安备 44030402004365号</p></div></span>
     
@@ -391,5 +394,17 @@ icons</p>
         <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/katex/katex.min.js"></script><script src="/lib/katex/contrib/auto-render.min.js"></script><script src="/lib/katex/contrib/copy-tex.min.js"></script><script src="/lib/katex/contrib/mhchem.min.js"></script><script src="/lib/cookieconsent/cookieconsent.min.js"></script><script>window.config={"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"}};</script><script src="/js/theme.min.js"></script></body>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="https://winson.disqus.com/embed.js" defer></script><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/katex/katex.min.js"></script><script src="/lib/katex/contrib/auto-render.min.js"></script><script src="/lib/katex/contrib/copy-tex.min.js"></script><script src="/lib/katex/contrib/mhchem.min.js"></script><script src="/lib/cookieconsent/cookieconsent.min.js"></script><script>window.config={"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"}};</script><script src="/js/theme.min.js"></script><script>
+            var doNotTrack = false;
+            if ( false ) {
+                var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+                var doNotTrack = (dnt == "1" || dnt == "yes");
+            }
+            if (!doNotTrack) {
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-HREM78X3J4');
+            }
+        </script><script src="https://www.googletagmanager.com/gtag/js?id=G-HREM78X3J4" async></script></body>
 </html>
