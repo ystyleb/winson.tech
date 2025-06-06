@@ -509,7 +509,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
 
   #  网站分析配置
   [params.analytics]
-    enable = true 
+    enable = true
     # Google Analytics
     [params.analytics.google]
       id = "G-94YNG1L737"

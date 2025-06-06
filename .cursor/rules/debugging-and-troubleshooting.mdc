@@ -1,0 +1,145 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Hugo调试和故障排除
+
+## 常见问题解决方案
+
+### 1. 构建错误
+
+#### 模板错误
+```bash
+# 检查模板语法错误
+hugo --verbose
+
+# 详细错误信息
+hugo server --verbose --debug
+```
+
+#### 配置文件错误
+- 检查 [config.toml](mdc:config.toml) 语法
+- 验证TOML格式是否正确
+- 确认所有引号和括号配对
+
+### 2. 内容显示问题
+
+#### 文章不显示
+1. 检查Front Matter中的 `draft: false`
+2. 确认文件位于正确的 `content/posts/` 目录
+3. 验证日期格式：`2024-01-01T10:00:00+08:00`
+4. 使用 `hugo server -D` 包含草稿文章
+
+#### 分类/标签不显示
+1. 检查Front Matter中的categories和tags格式
+2. 确认使用数组格式：`["标签1", "标签2"]`
+3. 重新构建站点：`hugo --cleanDestinationDir`
+
+### 3. 主题相关问题
+
+#### LoveIt主题功能异常
+1. 检查主题版本兼容性
+2. 更新主题：`git submodule update --remote themes/LoveIt`
+3. 查看主题文档：https://hugoloveit.com/
+
+#### 样式问题
+1. 清理缓存：删除 `resources/` 目录
+2. 重新生成：`hugo --cleanDestinationDir`
+3. 检查自定义CSS文件路径
+
+### 4. 性能问题
+
+#### 构建缓慢
+```bash
+# 清理缓存
+rm -rf resources/
+rm -rf public/
+
+# 重新构建
+hugo --cleanDestinationDir
+```
+
+#### 开发服务器问题
+```bash
+# 重启开发服务器
+hugo server --disableFastRender
+
+# 指定端口
+hugo server -p 1314
+```
+
+## 调试工具和命令
+
+### 诊断命令
+```bash
+# 检查Hugo版本
+hugo version
+
+# 验证配置
+hugo config
+
+# 列出所有内容
+hugo list all
+
+# 检查未来日期的文章
+hugo list future
+
+# 检查草稿文章
+hugo list drafts
+```
+
+### 日志调试
+```bash
+# 详细日志
+hugo server --verbose --debug
+
+# 只显示错误
+hugo server --quiet
+
+# 显示构建统计
+hugo --templateMetrics
+```
+
+## 开发环境设置
+
+### 推荐的开发命令
+```bash
+# 开发模式（推荐）
+hugo server -D --disableFastRender --verbose
+
+# 生产环境预览
+hugo server --environment production
+
+# 多语言开发
+hugo server --navigateToChanged
+```
+
+### 环境变量
+```bash
+# 设置Hugo环境
+export HUGO_ENV=development
+
+# 启用详细输出
+export HUGO_VERBOSE=true
+```
+
+## 版本控制最佳实践
+
+### Git Hooks
+考虑添加pre-commit hook验证Hugo构建：
+```bash
+#!/bin/sh
+hugo --quiet
+if [ $? -ne 0 ]; then
+    echo "Hugo build failed"
+    exit 1
+fi
+```
+
+### 忽略文件
+确保 [.gitignore](mdc:.gitignore) 包含：
+- `public/`
+- `resources/`
+- `.hugo_build.lock`
+- 操作系统和编辑器临时文件

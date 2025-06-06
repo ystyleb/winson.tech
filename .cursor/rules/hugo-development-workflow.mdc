@@ -1,0 +1,71 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Hugo开发工作流程
+
+## 常用Hugo命令
+
+### 开发模式
+```bash
+hugo server -D
+# 启动开发服务器，包含草稿文章
+# 通常在 http://localhost:1313 访问
+
+hugo server --disableFastRender
+# 禁用快速渲染，确保所有更改都被重新生成
+```
+
+### 内容创建
+```bash
+hugo new posts/文章标题.md
+# 在 content/posts/ 目录下创建新文章
+# 会基于 archetypes/ 中的模板生成
+
+hugo new posts/子目录/文章标题.md
+# 在 posts 下的子目录中创建文章
+```
+
+### 构建部署
+```bash
+hugo
+# 生成静态网站文件到 public/ 目录
+
+hugo --minify
+# 生成并压缩静态文件，用于生产环境
+```
+
+## Front Matter模板
+
+每篇新文章应包含以下Front Matter配置：
+
+```yaml
+---
+title: "文章标题"
+date: 2024-01-01T10:00:00+08:00
+draft: false
+description: "文章描述"
+tags: ["标签1", "标签2"]
+categories: ["分类"]
+author: "winson"
+---
+```
+
+## LoveIt主题特性
+
+参考 [config.toml](mdc:config.toml) 中的params配置：
+
+1. 支持多种主题模式：auto/light/dark
+2. 内置搜索功能（lunr引擎）
+3. 社交媒体链接配置
+4. 代码高亮和数学公式支持
+5. SEO优化配置
+
+## 开发最佳实践
+
+1. **本地开发**: 始终使用 `hugo server -D` 进行本地预览
+2. **内容组织**: 使用有意义的分类和标签系统
+3. **图片资源**: 图片应放在 `static/` 或 `images/` 目录
+4. **主题更新**: 通过git submodule更新LoveIt主题
+5. **配置管理**: 重要配置修改后及时提交到版本控制

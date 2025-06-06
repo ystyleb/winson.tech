@@ -1,0 +1,39 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Hugo项目结构指南
+
+这是一个基于Hugo的个人技术博客网站，使用LoveIt主题构建。
+
+## 项目核心文件
+
+- [config.toml](mdc:config.toml) - Hugo主配置文件，包含网站设置、主题配置、菜单和参数
+- [.gitignore](mdc:.gitignore) - Git忽略文件，包含Hugo特定的忽略规则
+
+## 目录结构
+
+- `content/posts/` - 博客文章内容，使用Markdown格式
+- `layouts/` - 自定义模板文件，覆盖主题默认布局
+- `static/` - 静态资源文件（图片、CSS、JS等）
+- `themes/LoveIt/` - LoveIt主题文件
+- `public/` - Hugo生成的静态网站文件（自动生成，已忽略）
+- `resources/` - Hugo处理资源的缓存目录（自动生成，已忽略）
+- `data/` - 数据文件，可用于模板中
+- `archetypes/` - 内容模板，用于创建新文章
+- `images/` - 项目相关图片资源
+
+## 网站信息
+
+- 网站URL: https://winson.tech
+- 主题: LoveIt
+- 语言: 简体中文 (zh-CN)
+- 作者: winson
+
+## 开发注意事项
+
+1. 所有文章应放在 `content/posts/` 目录下
+2. 新文章应包含完整的Front Matter配置
+3. 自定义布局放在 `layouts/` 目录下，会覆盖主题默认布局
+4. 静态资源应放在 `static/` 目录下

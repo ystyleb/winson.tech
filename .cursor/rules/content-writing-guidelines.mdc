@@ -1,0 +1,107 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# 内容写作指南
+
+## 文章结构规范
+
+### 1. Front Matter必填字段
+```yaml
+---
+title: "清晰准确的标题"
+date: 2024-01-01T10:00:00+08:00
+draft: false  # true为草稿，false为发布
+description: "简短的文章描述，用于SEO"
+tags: ["技术标签", "主题标签"]
+categories: ["技术分类"]
+author: "winson"
+---
+```
+
+### 2. 可选Front Matter字段
+```yaml
+featuredImage: "/images/featured-image.jpg"  # 特色图片
+featuredImagePreview: "/images/preview.jpg"  # 预览图片
+toc: true  # 显示目录
+math: true  # 启用数学公式
+code: true  # 启用代码高亮
+```
+
+## 内容写作规范
+
+### 标题层级
+```markdown
+# 一级标题 (文章主标题，通常不用)
+## 二级标题 (章节标题)
+### 三级标题 (小节标题)
+#### 四级标题 (子小节标题)
+```
+
+### 代码块格式
+````markdown
+```语言名称
+代码内容
+```
+````
+
+支持的语言：`python`, `javascript`, `go`, `java`, `html`, `css`, `bash`, `yaml`, `json`, `markdown`
+
+### 图片引用
+```markdown
+![图片描述](/images/图片文件名.jpg)
+```
+- 图片文件应存放在 `static/images/` 目录
+- 使用有意义的文件名和alt文本
+
+### 链接格式
+```markdown
+[链接文字](https://example.com)
+[内部链接](/posts/其他文章/)
+```
+
+## LoveIt主题增强功能
+
+### 1. Shortcodes使用
+```markdown
+{{< admonition tip "提示" >}}
+这是一个提示框
+{{< /admonition >}}
+
+{{< admonition warning "警告" >}}
+这是一个警告框
+{{< /admonition >}}
+```
+
+### 2. 数学公式
+```markdown
+行内公式：$E = mc^2$
+
+块级公式：
+$$
+\frac{n!}{k!(n-k)!} = \binom{n}{k}
+$$
+```
+
+## 文章分类和标签策略
+
+### 分类 (Categories)
+- 技术教程
+- 开发经验
+- 工具推荐
+- 生活随笔
+
+### 标签 (Tags)
+使用具体的技术或主题标签：
+- 编程语言：Python, JavaScript, Go
+- 框架工具：React, Vue, Hugo
+- 技术领域：AI, 前端, 后端, DevOps
+
+## SEO优化建议
+
+1. **标题优化**: 包含关键词，控制在60字符以内
+2. **描述优化**: 150字符左右的简洁描述
+3. **URL优化**: 使用英文或拼音，避免中文URL
+4. **图片优化**: 添加alt文本，控制文件大小
+5. **内链建设**: 适当添加相关文章链接
